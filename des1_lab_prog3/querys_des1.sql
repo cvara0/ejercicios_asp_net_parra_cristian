@@ -1,0 +1,17 @@
+CREATE DATABASE lab_prog_3_des_1;
+GO
+
+USE [lab_prog_3_des_1];
+
+CREATE TABLE Marcas(
+	id INT PRIMARY KEY IDENTITY (1,1),
+	nombre VARCHAR(50) UNIQUE NOT NULL
+);
+
+
+CREATE TABLE Modelos(
+	id INT PRIMARY KEY IDENTITY (1,1),
+	nombre VARCHAR(50) NOT NULL,
+	idMarcas INT NOT NULL,
+	FOREIGN KEY (idMarcas) REFERENCES Marcas(id) ON DELETE CASCADE
+);

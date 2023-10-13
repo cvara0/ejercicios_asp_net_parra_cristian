@@ -1,0 +1,9 @@
+Automoviles - AutomovilMarcas
+
+Formularios Web para cada ABM de tabla
+
+Mostrar en grilla cantidad de automóviles por AutomovilMarcas
+
+AutomovilMarcas (int id, nombre varchar (50))
+
+Automoviles (id, modelo varchar (100), idAutomovilMarca int)
