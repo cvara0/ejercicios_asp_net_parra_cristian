@@ -35,7 +35,7 @@
             <asp:Label ID="Label8" runat="server"></asp:Label>
 
             <br />
-            <asp:ListBox ID="ListBox1" runat="server" Width="222px" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="descripcion" DataValueField="idCuenta" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Height="80px"></asp:ListBox>
+            <asp:ListBox ID="ListBox1" runat="server" Width="222px" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="descripcion" DataValueField="id" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Height="80px"></asp:ListBox>
             
             <br />
             <asp:Label ID="Label19" runat="server" Text="----------------------------------------------------------"></asp:Label>
@@ -80,7 +80,7 @@
             <br />
             
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:tp_3CadenaConexion %>" DeleteCommand="DELETE FROM [Cuentas] WHERE [idCuenta] = @idCuenta" InsertCommand="INSERT INTO [Cuentas] ([descripcion]) VALUES (@descripcion)" ProviderName="<%$ ConnectionStrings:tp_3CadenaConexion.ProviderName %>" SelectCommand="SELECT * FROM [Cuentas] ORDER BY [descripcion]" UpdateCommand="UPDATE [Cuentas] SET [descripcion] = @descripcion WHERE [idCuenta] = @idCuenta">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:tp_3CadenaConexion %>" DeleteCommand="DELETE FROM [Cuentas] WHERE [id] = @idCuenta" InsertCommand="INSERT INTO [Cuentas] ([descripcion]) VALUES (@descripcion)" ProviderName="<%$ ConnectionStrings:tp_3CadenaConexion.ProviderName %>" SelectCommand="SELECT * FROM [Cuentas] ORDER BY [descripcion]" UpdateCommand="UPDATE [Cuentas] SET [descripcion] = @descripcion WHERE [id] = @id">
             <DeleteParameters>
                 <asp:ControlParameter ControlID="ListBox1" Name="idCuenta" PropertyName="SelectedValue" Type="Int32" />
             </DeleteParameters>
@@ -89,10 +89,10 @@
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="descripcion" Type="String" />
-                <asp:Parameter Name="idCuenta" Type="Int32" />
+                <asp:Parameter Name="id" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:tp_3CadenaConexion %>" SelectCommand="SELECT * FROM [Cuentas] WHERE ([idCuenta] = @idCuenta)">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:tp_3CadenaConexion %>" SelectCommand="SELECT * FROM [Cuentas] WHERE ([id] = @idCuenta)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ListBox1" Name="idCuenta" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>

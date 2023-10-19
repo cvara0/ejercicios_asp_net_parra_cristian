@@ -94,7 +94,7 @@ namespace lab_prog_3_tp_3_registros_contables
             
             if (!string.IsNullOrEmpty(TextBox1.Text) && !string.IsNullOrWhiteSpace(TextBox1.Text))
             {
-                SqlDataSource1.UpdateParameters["idCuenta"].DefaultValue = ListBox1.SelectedValue.ToString();
+                SqlDataSource1.UpdateParameters["id"].DefaultValue = ListBox1.SelectedValue.ToString();
                 SqlDataSource1.UpdateParameters["descripcion"].DefaultValue = TextBox1.Text;
                 int result = SqlDataSource1.Update();
                 if (result != 0)
