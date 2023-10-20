@@ -37,7 +37,7 @@ namespace des1_lab_prog3
             if (!string.IsNullOrEmpty(TextBox1.Text) && !string.IsNullOrWhiteSpace(TextBox1.Text))
             {
                 string palabraClave = TextBox1.Text.Trim();
-                SqlDataSourceMarcas1.SelectCommand = "SELECT * FROM Marcas WHERE nombre LIKE '%' + @palabraClave + '%'";
+                SqlDataSourceMarcas1.SelectCommand = "SELECT * FROM AutomovilMarcas WHERE nombre LIKE '%' + @palabraClave + '%'";
                 SqlDataSourceMarcas1.SelectParameters.Clear();
                 SqlDataSourceMarcas1.SelectParameters.Add("palabraClave", palabraClave);
                 GridView1.DataBind();
@@ -49,7 +49,7 @@ namespace des1_lab_prog3
             else
             {
                 Label4.Text = "Mostrando todas las marcas";
-                SqlDataSourceMarcas1.SelectCommand = "SELECT * FROM Marcas";
+                SqlDataSourceMarcas1.SelectCommand = "SELECT * FROM AutomovilMarcas";
                 SqlDataSourceMarcas1.SelectParameters.Clear();
                 GridView1.DataBind();
             }
@@ -60,7 +60,7 @@ namespace des1_lab_prog3
         {
             Label5.Text = GridView1.SelectedRow.Cells[1].Text;
             string idMarcas = GridView1.SelectedValue.ToString();
-            SqlDataSourceModelos1.SelectCommand = "SELECT id,nombre FROM Modelos WHERE idMarcas=@idMarcas";
+            SqlDataSourceModelos1.SelectCommand = "SELECT id,modelo FROM Automoviles WHERE idAutomovilMarca=@idMarcas";
             SqlDataSourceModelos1.SelectParameters.Clear();
             SqlDataSourceModelos1.SelectParameters.Add("idMarcas", idMarcas);
             GridView2.DataBind();
@@ -104,7 +104,7 @@ namespace des1_lab_prog3
                 {
                     string palabraClave = TextBox2.Text.Trim();
                     string idMarcas = GridView1.SelectedValue.ToString();
-                    SqlDataSourceModelos1.SelectCommand = "SELECT id,nombre FROM Modelos WHERE nombre LIKE '%' + @palabraClave + '%' AND idMarcas=@idMarcas";
+                    SqlDataSourceModelos1.SelectCommand = "SELECT id,modelo FROM Automoviles WHERE modelo LIKE '%' + @palabraClave + '%' AND idAutomovilMarca=@idMarcas";
                     SqlDataSourceModelos1.SelectParameters.Clear();
                     SqlDataSourceModelos1.SelectParameters.Add("idMarcas", idMarcas);
                     SqlDataSourceModelos1.SelectParameters.Add("palabraClave", palabraClave);
@@ -119,7 +119,7 @@ namespace des1_lab_prog3
                 {
                     Label7.Text = "Mostrando todos los modelos de la marca";
                     string idMarcas = GridView1.SelectedValue.ToString();
-                    SqlDataSourceModelos1.SelectCommand = "SELECT id,nombre FROM Modelos WHERE idMarcas=@idMarcas";
+                    SqlDataSourceModelos1.SelectCommand = "SELECT id,modelo FROM Automoviles WHERE idAutomovilMarca=@idMarcas";
                     SqlDataSourceModelos1.SelectParameters.Clear();
                     SqlDataSourceModelos1.SelectParameters.Add("idMarcas", idMarcas);
                     GridView2.DataBind();

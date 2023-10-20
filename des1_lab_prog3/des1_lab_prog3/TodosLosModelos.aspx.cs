@@ -21,7 +21,7 @@ namespace des1_lab_prog3
             if (!string.IsNullOrEmpty(TextBox1.Text) && !string.IsNullOrWhiteSpace(TextBox1.Text))
             {
                 string palabraClave = TextBox1.Text.Trim();
-                SqlDataSourceTodos.SelectCommand = " SELECT Modelos.id AS 'ID Modelo',Modelos.nombre AS 'Modelo',Marcas.id AS 'ID Marca',Marcas.nombre AS 'Marca' FROM Modelos INNER JOIN Marcas ON Modelos.idMarcas = Marcas.id WHERE Modelos.nombre LIKE '%' + @palabraClave + '%'";
+                SqlDataSourceTodos.SelectCommand = "SELECT Automoviles.id AS 'ID Modelo',Automoviles.modelo AS 'Modelo',AutomovilMarcas.id AS 'ID Marca',AutomovilMarcas.nombre AS 'Marca' FROM Automoviles INNER JOIN AutomovilMarcas ON Automoviles.idAutomovilMarca = AutomovilMarcas.id WHERE Automoviles.modelo LIKE '%' + @palabraClave + '%'";
                
                 SqlDataSourceTodos.SelectParameters.Clear();
                 SqlDataSourceTodos.SelectParameters.Add("palabraClave", palabraClave);
@@ -35,7 +35,7 @@ namespace des1_lab_prog3
             else
             {
                 Label2.Text = "Mostrando todos los modelos";
-                SqlDataSourceTodos.SelectCommand = "SELECT Modelos.id AS 'ID Modelo',Modelos.nombre AS 'Modelo',Marcas.id AS 'ID Marca',Marcas.nombre AS 'Marca' FROM Modelos INNER JOIN Marcas ON Modelos.idMarcas=Marcas.id";
+                SqlDataSourceTodos.SelectCommand = "SELECT Automoviles.id AS 'ID Modelo',Automoviles.modelo AS 'Modelo',AutomovilMarcas.id AS 'ID Marca',AutomovilMarcas.nombre AS 'Marca' FROM Automoviles INNER JOIN AutomovilMarcas ON Automoviles.idAutomovilMarca=AutomovilMarcas.id";
                 GridView1.DataBind();
             }
         }
@@ -44,7 +44,7 @@ namespace des1_lab_prog3
         {
             TextBox1.Text = "";
             Label2.Text = "Mostrando todos los modelos";
-            SqlDataSourceTodos.SelectCommand = "SELECT Modelos.id AS 'ID Modelo',Modelos.nombre AS 'Modelo',Marcas.id AS 'ID Marca',Marcas.nombre AS 'Marca' FROM Modelos INNER JOIN Marcas ON Modelos.idMarcas=Marcas.id";
+            SqlDataSourceTodos.SelectCommand = "SELECT Automoviles.id AS 'ID Modelo',Automoviles.modelo AS 'Modelo',AutomovilMarcas.id AS 'ID Marca',AutomovilMarcas.nombre AS 'Marca' FROM Automoviles INNER JOIN AutomovilMarcas ON Automoviles.idAutomovilMarca=AutomovilMarcas.id";
             GridView1.DataBind();
         }
 

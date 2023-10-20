@@ -15,7 +15,7 @@
             <br />
             <asp:Label ID="Label3" runat="server" Text="Buscar Modelo" style="font-size: small"></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" MaxLength="100"></asp:TextBox>
 &nbsp;&nbsp;
             <asp:Button ID="Button1" runat="server" Text="Buscar" OnClick="Button1_Click" />
             &nbsp;&nbsp;
@@ -39,7 +39,7 @@
                 <SortedDescendingHeaderStyle BackColor="#3E3277" />
             </asp:GridView>
         </div>
-        <asp:SqlDataSource ID="SqlDataSourceTodos" runat="server" ConnectionString="<%$ ConnectionStrings:lab_prog_3_des_1ConnectionString %>" DeleteCommand="DELETE FROM [Modelos] WHERE [id] = @id" InsertCommand="INSERT INTO [Modelos] ([nombre], [idMarcas]) VALUES (@nombre, @idMarcas)" SelectCommand="SELECT Modelos.id AS 'ID Modelo',Modelos.nombre AS 'Modelo',Marcas.id AS 'ID Marca',Marcas.nombre AS 'Marca' FROM Modelos INNER JOIN Marcas ON Modelos.idMarcas=Marcas.id" UpdateCommand="UPDATE [Modelos] SET [nombre] = @nombre, [idMarcas] = @idMarcas WHERE [id] = @id">
+        <asp:SqlDataSource ID="SqlDataSourceTodos" runat="server" ConnectionString="<%$ ConnectionStrings:lab_prog_3_des_1ConnectionString %>" SelectCommand="SELECT Automoviles.id AS 'ID Modelo', Automoviles.modelo AS 'Modelo',AutomovilMarcas.id AS 'ID Marca',AutomovilMarcas.nombre AS 'Marca' FROM Automoviles INNER JOIN AutomovilMarcas ON Automoviles.idAutomovilMarca=AutomovilMarcas.id">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />
             </DeleteParameters>

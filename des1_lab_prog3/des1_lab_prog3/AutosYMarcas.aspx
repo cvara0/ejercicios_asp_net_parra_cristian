@@ -18,7 +18,7 @@
             <br />
             <asp:Label ID="Label3" runat="server" Text="Buscar/Agregar Marca" style="font-size: small"></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" MaxLength="50"></asp:TextBox>
             &nbsp;<asp:Button ID="Button1" runat="server" Text="Buscar" Width="60px" OnClick="Button1_Click" />
             &nbsp;
             <asp:Button ID="Button5" runat="server" Text="Agregar" OnClick="Button5_Click" Width="60px" />
@@ -56,7 +56,7 @@
             <br />
             <asp:Label ID="Label6" runat="server" Text="Buscar/Agregar Modelo" style="font-size: small"></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" MaxLength="100"></asp:TextBox>
 &nbsp; <asp:Button ID="Button2" runat="server" Text="Buscar" Width="60px" OnClick="Button2_Click" />
             &nbsp;
             <asp:Button ID="Button4" runat="server" Text="Agregar" Width="60px" OnClick="Button4_Click" />
@@ -68,7 +68,7 @@
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="nombre" HeaderText="nombre" SortExpression="nombre" />
+                    <asp:BoundField DataField="modelo" HeaderText="modelo" SortExpression="modelo" />
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteText="X" EditText="E" ButtonType="Button" />
                 </Columns>
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -86,7 +86,7 @@
             <br />
         </div>
         <br />
-        <asp:SqlDataSource ID="SqlDataSourceMarcas1" runat="server" ConnectionString="<%$ ConnectionStrings:lab_prog_3_des_1ConnectionString %>" SelectCommand="SELECT * FROM [Marcas] ORDER BY nombre" DeleteCommand="DELETE FROM [Marcas] WHERE [id] = @id" InsertCommand="INSERT INTO [Marcas] ([nombre]) SELECT UPPER(@nombre) WHERE NOT EXISTS (SELECT * FROM Marcas WHERE nombre=@nombre)" UpdateCommand="UPDATE [Marcas] SET [nombre] = UPPER(@nombre) WHERE [id] = @id AND NOT EXISTS (SELECT * FROM Marcas WHERE nombre=@nombre)">
+        <asp:SqlDataSource ID="SqlDataSourceMarcas1" runat="server" ConnectionString="<%$ ConnectionStrings:lab_prog_3_des_1ConnectionString %>" SelectCommand="SELECT * FROM [AutomovilMarcas] ORDER BY nombre" DeleteCommand="DELETE FROM [AutomovilMarcas] WHERE [id] = @id" InsertCommand="INSERT INTO [AutomovilMarcas] ([nombre]) SELECT UPPER(@nombre) WHERE NOT EXISTS (SELECT * FROM AutomovilMarcas WHERE nombre=@nombre)" UpdateCommand="UPDATE [AutomovilMarcas] SET [nombre] = UPPER(@nombre) WHERE [id] = @id AND NOT EXISTS (SELECT * FROM AutomovilMarcas WHERE nombre=@nombre)">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />
             </DeleteParameters>
@@ -99,19 +99,19 @@
             </UpdateParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:SqlDataSource ID="SqlDataSourceModelos1" runat="server" ConnectionString="<%$ ConnectionStrings:lab_prog_3_des_1ConnectionString %>" DeleteCommand="DELETE FROM [Modelos] WHERE [id] = @id" InsertCommand="INSERT INTO [Modelos] ([nombre], [idMarcas]) SELECT UPPER(@nombre), @idMarcas WHERE NOT EXISTS (SELECT * FROM Modelos WHERE nombre=@nombre AND idMarcas=@idMarcas)" SelectCommand="SELECT id,nombre FROM [Modelos] WHERE idMarcas=@idMarcas" UpdateCommand="UPDATE [Modelos] SET [nombre] = UPPER(@nombre), [idMarcas] = @idMarcas WHERE [id] = @id AND NOT EXISTS (SELECT * FROM Modelos WHERE nombre=@nombre)">
+        <asp:SqlDataSource ID="SqlDataSourceModelos1" runat="server" ConnectionString="<%$ ConnectionStrings:lab_prog_3_des_1ConnectionString %>" DeleteCommand="DELETE FROM [Automoviles] WHERE [id] = @id" InsertCommand="INSERT INTO [Automoviles] ([modelo], [idAutomovilMarca]) SELECT UPPER(@modelo), @idMarcas WHERE NOT EXISTS (SELECT * FROM Automoviles WHERE modelo=@modelo AND idAutomovilMarca=@idMarcas)" SelectCommand="SELECT id,modelo FROM [Automoviles] WHERE idAutomovilMarca=@idMarcas" UpdateCommand="UPDATE [Automoviles] SET [modelo] = UPPER(@modelo), [idAutomovilMarca] = @idMarcas WHERE [id] = @id AND NOT EXISTS (SELECT * FROM Automoviles WHERE modelo=@modelo)">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:ControlParameter ControlID="TextBox2" Name="nombre" PropertyName="Text" Type="String" />
+                <asp:ControlParameter ControlID="TextBox2" Name="modelo" PropertyName="Text" Type="String" />
                 <asp:ControlParameter ControlID="GridView1" Name="idMarcas" PropertyName="SelectedValue" Type="Int32" />
             </InsertParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="GridView1" Name="idMarcas" PropertyName="SelectedValue" />
             </SelectParameters>
             <UpdateParameters>
-                <asp:Parameter Name="nombre" Type="String" />
+                <asp:Parameter Name="modelo" Type="String" />
                 <asp:ControlParameter ControlID="GridView1" Name="idMarcas" PropertyName="SelectedValue" Type="Int32" />
                 <asp:ControlParameter ControlID="GridView2" Name="id" PropertyName="SelectedValue" Type="Int32" />
             </UpdateParameters>
